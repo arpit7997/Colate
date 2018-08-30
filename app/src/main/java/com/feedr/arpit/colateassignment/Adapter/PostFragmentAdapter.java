@@ -1,16 +1,19 @@
 package com.feedr.arpit.colateassignment.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.feedr.arpit.colateassignment.DetailScreen;
 import com.feedr.arpit.colateassignment.Model.Post;
 import com.feedr.arpit.colateassignment.R;
+import com.feedr.arpit.colateassignment.Utils.Constants;
 
 import java.util.List;
 
@@ -37,7 +40,7 @@ public class PostFragmentAdapter  extends RecyclerView.Adapter<PostFragmentAdapt
     }
 
     @Override
-    public void onBindViewHolder(PostFragmentAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final PostFragmentAdapter.ViewHolder holder, final int position) {
 
         final Post post = list.get(position);
 
@@ -63,6 +66,17 @@ public class PostFragmentAdapter  extends RecyclerView.Adapter<PostFragmentAdapt
             holder.text_circular.setText(post.getDescription());
             holder.image_post.setVisibility(View.GONE);
         }
+
+        holder.card_post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent detail_intent = new Intent(context, DetailScreen.class);
+                detail_intent.putExtra(Constants.title, holder.title.getText());
+                context.startActivity(detail_intent);
+
+            }
+        });
+
     }
 
     @Override
@@ -79,6 +93,7 @@ public class PostFragmentAdapter  extends RecyclerView.Adapter<PostFragmentAdapt
         public ImageView profile_pic;
         public ImageView image_arrow;
         public ImageView image_post;
+        public CardView card_post;
 
         View view;
 
@@ -93,6 +108,7 @@ public class PostFragmentAdapter  extends RecyclerView.Adapter<PostFragmentAdapt
             image_arrow = (ImageView) itemView.findViewById(R.id.image_arrow);
             text_circular = (TextView) itemView.findViewById(R.id.text_circular);
             time = (TextView) itemView.findViewById(R.id.time);
+            card_post = (CardView) itemView.findViewById(R.id.card_post);
 
             view = itemView;
         }
