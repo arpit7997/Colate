@@ -17,7 +17,9 @@ public class DetailScreen extends AppCompatActivity {
 
         text_detail_title = (TextView) findViewById(R.id.text_detail_title);
 
+        //check if value is pased in intent
         if(getIntent().getExtras()!=null){
+            //set title
             text_detail_title.setText(getIntent().getStringExtra(Constants.title));
         }
     }

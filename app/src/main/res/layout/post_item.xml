@@ -73,7 +73,8 @@
                 android:text="Company Volunteering"
                 android:textColor="#2c282a"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:transitionName="transition"/>
 
             <ImageView
                 android:id="@+id/image_post"

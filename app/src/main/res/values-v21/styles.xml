@@ -6,6 +6,11 @@
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:statusBarColor">#000</item>
-
     </style>
+
+    <style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
 </resources>

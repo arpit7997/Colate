@@ -1,5 +1,7 @@
 package com.feedr.arpit.colateassignment.Adapter;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
@@ -49,6 +51,7 @@ public class PostFragmentAdapter  extends RecyclerView.Adapter<PostFragmentAdapt
 
         View view = inflater.inflate(R.layout.post_item, null);
 
+        //binding views
         holder.name.setText(post.getName());
 
         holder.time.setText(post.getTime());
@@ -58,6 +61,7 @@ public class PostFragmentAdapter  extends RecyclerView.Adapter<PostFragmentAdapt
         holder.title.setText(post.getTitle());
 
         if(post.getPostImage()!= null){
+            //set visibility to gone of arrow and text when we have image
             holder.text_circular.setVisibility(View.GONE);
             holder.image_arrow.setVisibility(View.GONE);
             holder.image_post.setImageResource(post.getPostImage());
@@ -67,18 +71,28 @@ public class PostFragmentAdapter  extends RecyclerView.Adapter<PostFragmentAdapt
             holder.image_post.setVisibility(View.GONE);
         }
 
+        //on Click to card opens activity
         holder.card_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent detail_intent = new Intent(context, DetailScreen.class);
                 detail_intent.putExtra(Constants.title, holder.title.getText());
-                context.startActivity(detail_intent);
+
+                View sharedView = holder.title;
+
+                //open activity with animation
+                ActivityOptions transitionActivityOptions = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation((Activity) context, sharedView, "transition");
+                }
+                context.startActivity(detail_intent,transitionActivityOptions.toBundle());
 
             }
         });
 
     }
 
+    //return count of list
     @Override
     public int getItemCount() {
         return list.size();

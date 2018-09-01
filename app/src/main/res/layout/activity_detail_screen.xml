@@ -12,6 +12,7 @@
         android:id="@+id/text_detail_title"
         android:textSize="20sp"
         android:text="hey"
+        android:transitionName="transition"
         android:textStyle="bold"
         android:gravity="center"/>
 
