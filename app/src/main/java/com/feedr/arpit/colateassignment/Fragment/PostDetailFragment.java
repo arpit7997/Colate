@@ -43,6 +43,7 @@ public class PostDetailFragment extends android.support.v4.app.Fragment {
     Toolbar toolbar;
     FloatingActionButton fab_filter;
     Post first,second,third;
+    static View view;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,8 @@ public class PostDetailFragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.user_feed_fragment, container, false);
+
+        view = inflater.inflate(R.layout.user_feed_fragment, container, false);
 
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         fab_filter = (FloatingActionButton) view.findViewById(R.id.fab_filter);
@@ -62,7 +64,7 @@ public class PostDetailFragment extends android.support.v4.app.Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             toolbar.setElevation(10);
         }
-
+        view.setAlpha((float) 1);
         list.clear();
 
         //create post
@@ -95,6 +97,7 @@ public class PostDetailFragment extends android.support.v4.app.Fragment {
         fab_filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                view.setAlpha((float) 0.4);
                 FragmentTransaction ft = getChildFragmentManager().beginTransaction();
                 FilterFragment newFragment = FilterFragment.newInstance();
                 newFragment.setParentFab(fab_filter);
@@ -107,6 +110,7 @@ public class PostDetailFragment extends android.support.v4.app.Fragment {
 
 
     public static class FilterFragment extends AAH_FabulousFragment implements CompoundButton.OnCheckedChangeListener {
+
 
         @SuppressLint("NewApi")
         ArrayMap<String, List<String>> applied_filters = new ArrayMap<>();
@@ -180,8 +184,8 @@ public class PostDetailFragment extends android.support.v4.app.Fragment {
                     }
                     recyclerView.setAdapter(postAdapter);
                     postAdapter.notifyDataSetChanged();
-                    closeFilter(applied_filters);
 
+                    closeFilter(applied_filters);
                 }
             });
 
@@ -194,7 +198,6 @@ public class PostDetailFragment extends android.support.v4.app.Fragment {
                     recyclerView.setAdapter(postAdapter);
                     postAdapter.notifyDataSetChanged();
                     closeFilter(applied_filters);
-
                 }
             });
 
@@ -203,7 +206,6 @@ public class PostDetailFragment extends android.support.v4.app.Fragment {
                 public void onClick(View v) {
                     postAdapter.notifyDataSetChanged();
                     closeFilter(applied_filters);
-
                 }
             });
 
@@ -233,6 +235,15 @@ public class PostDetailFragment extends android.support.v4.app.Fragment {
             if (sortBy != null) {
                 this.sortBy = sortBy;
             }
+        }
+
+        //set visibility to 1 when view is destroyed mainly due to backPressed
+        @Override
+        public void onDestroyView() {
+            super.onDestroyView();
+
+            view.setAlpha((float) 1);
+            closeFilter(applied_filters);
         }
     }
 }

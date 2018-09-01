@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.allattentionhere.fabulousfilter.AAH_FilterView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:layout_gravity="center_vertical"
-                android:background="@android:color/white"
+                android:background="#364081"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -38,8 +38,9 @@
                     android:layout_weight="1"
                     android:padding="10dp"
                     android:text="Filter"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="24sp" />
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/img_close_filter"
@@ -62,7 +63,7 @@
                     android:padding="4dp"
                     android:text="Cell Type"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <info.hoang8f.android.segmented.SegmentedGroup
                     android:id="@+id/choice_type"
@@ -71,8 +72,9 @@
                     android:layout_gravity="start"
                     android:layout_marginTop="10dp"
                     android:background="@android:color/white"
+                    android:orientation="horizontal"
                     app:sc_corner_radius="0dp"
-                    android:orientation="horizontal">
+                    app:sc_tint_color="#364081">
 
                     <RadioButton
                         android:id="@+id/post"
@@ -99,19 +101,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
-                    android:text="Timer"
                     android:padding="4dp"
+                    android:text="Timer"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <info.hoang8f.android.segmented.SegmentedGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginTop="10dp"
-                    app:sc_corner_radius="0dp"
                     android:background="@android:color/white"
-                    android:orientation="horizontal">
+
+                    android:orientation="horizontal"
+                    app:sc_corner_radius="0dp"
+                    app:sc_tint_color="#364081">
 
                     <RadioButton
                         style="@style/RadioButton"
@@ -151,9 +155,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginTop="10dp"
-                    app:sc_corner_radius="0dp"
                     android:background="@android:color/white"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    app:sc_corner_radius="0dp"
+                    app:sc_tint_color="#364081">
 
                     <RadioButton
                         style="@style/RadioButton"
@@ -192,10 +197,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    app:sc_corner_radius="0dp"
                     android:layout_marginTop="10dp"
                     android:background="@android:color/white"
-                    android:orientation="horizontal">
+
+                    android:orientation="horizontal"
+                    app:sc_corner_radius="0dp"
+                    app:sc_tint_color="#364081">
 
                     <RadioButton
                         style="@style/RadioButton"
@@ -248,7 +255,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/states_fab_button"
+                android:background="#364081"
                 android:src="@drawable/refresh"
                 android:tint="@android:color/white" />
 
@@ -257,7 +264,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/states_fab_button"
+                android:background="#364081"
                 android:src="@drawable/done"
                 android:tint="@android:color/white" />
 
